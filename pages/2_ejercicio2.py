@@ -1,45 +1,50 @@
-from code import interact
-import os
-from numpy import integer
 import streamlit as st
-from tenacity import retry_never
+import time
 
-st.title('Ejercicio 02')
+st.title('👈 MENU PRINCIPAL')
+st.header('Ejercicio 02')
 '''
-Crear un Array que almacene los valores múltiplos de X
-entre 0 y 100. Retornar la cantidad de datos que se almacenaron.
-Retornar la sumatoria de los datos del array.
+Crear un Array que almacene los valores múltiplos de X entre 0 y 100. Retornar la cantidad de datos que se almacenaron. Retornar la sumatoria de los datos del array.
 '''
-# '''
-# Que realice los diferentes métodos de ordenación de arrays utilizando las funciones:\n
-# ✨ Relleno de un array.\n
-# ✨ Copia un array a otro.\n
-# ✨ Mostrar en pantalla todos los valores.\n
-# ✨ Ordenar por burbuja.\n
-# '''
-def metodo_array():
-    st.session_state
+
+
+def multiplos(numX):
+    if numX == 0:
+        return 'El numero tiene que ser diferente de " 0 "'
+    if 'valores' not in st.session_state: 
+        st.session_state['valores'] = [] 
     return None
 
-def main():
+def main(): 
     st.header('Múltiplos de "x"')
+    numX = st.number_input("Ingresa un número:",value = None,format='%.f')
     
-    num = st.text_input("Ingresa un número:")
-    
-    if num:
-        
-        try:
-            numero_entero = int(num)
+    if st.button("Calcular", type='primary',use_container_width=True):
+        error = multiplos(numX)
+        if error:
+            st.error(error)
+        else:
+            st.session_state['valores'].clear()
+            for i in range(0, 101):
+                if i % numX == 0:
+                    st.session_state['valores'].append(i)
+
+            primerMensaje = st.success('Datos agregados correctamente')
+            time.sleep(2)
+            primerMensaje.empty()
             
-            st.write(f"Número ingresado: {numero_entero}")
+            sumatoria = sum(st.session_state['valores'])
+            cantidad = len(st.session_state['valores'])
             
-        except ValueError:
-            
-            st.error("Por favor, ingresa un número válido.")
-            
-    else:
-        
-        st.warning("El campo no puede estar vacío.")
+            st.write(f'**LISTA DE DATOS:** {st.session_state["valores"]}')
+            st.write(f'**TOTAL DE DATOS:** {cantidad}')
+            st.write(f'**SUMATORIA DE DATOS:** {sumatoria}')
+
+    if st.button("Limpiar", type='secondary',use_container_width=True):
+        st.session_state['valores'].clear()
+        segundoMensaje = st.info("La lista ha sido limpiada")
+        time.sleep(1)
+        segundoMensaje.empty()
 
 if __name__ == "__main__":
     main()
