@@ -1,12 +1,13 @@
 import streamlit as st
 import time
+from estilo import pg_bg_pgs
 
-st.title('👈 MENU PRINCIPAL')
-st.header('Ejercicio 02')
-'''
-Crear un Array que almacene los valores múltiplos de X entre 0 y 100. Retornar la cantidad de datos que se almacenaron. Retornar la sumatoria de los datos del array.
-'''
+st.markdown(pg_bg_pgs,unsafe_allow_html=True)
 
+st.title('Ejercicio 02')
+'''
+**Crear un Array que almacene los valores múltiplos de X entre 0 y 100. Retornar la cantidad de datos que se almacenaron. Retornar la sumatoria de los datos del array.**
+'''
 
 def multiplos(numX):
     if numX == 0:

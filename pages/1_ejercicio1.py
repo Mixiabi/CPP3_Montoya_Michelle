@@ -1,6 +1,7 @@
-import os
+from estilo import pg_bg_pgs
 import streamlit as st
 
+st.markdown(pg_bg_pgs,unsafe_allow_html=True)
 st.title('Ejercicio 01')
 '''
 Crea un programa que pida al usuario una contraseña, de forma repetitiva mientras que no introduzca “asdasd”. Cuando finalmente escriba la contraseña correcta, se le dirá “Bienvenido” y terminará elprograma.
