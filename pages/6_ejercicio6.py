@@ -24,7 +24,6 @@ def calcular(n):
 
 
 def main():
-    # Inicializar el estado de 'numero' y 'respuesta' en session_state
     if 'numero' not in st.session_state:
         st.session_state['numero'] = ''
     if 'respuesta' not in st.session_state:
@@ -47,7 +46,6 @@ def main():
     if st.button('Reiniciar'):
         st.session_state['numero'] = ''
         st.session_state['respuesta'] = None
-        st.experimental_rerun()
 
 
 if __name__ == "__main__":
