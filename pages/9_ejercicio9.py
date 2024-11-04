@@ -21,22 +21,14 @@ def calcular_media(valores):
     return sum(valores) / len(valores)
 
 def main():
-    # Entrada para el tamaño del array
     tamaño_array = st.number_input('**Ingresa la dimensión del array (entre 1 y 100):**', min_value=1, max_value=100, value=10)
-
-    # Botón para crear el array
     if st.button('Rellenar el Array'):
-        # Rellenar el array y calcular la media
         array_valores = rellenar_array(tamaño_array)
         media = calcular_media(array_valores)
-
-        # Mostrar resultados
         st.write(f'Array generado: {array_valores}')
         st.write(f'Media de los valores: {media:.2f}')
-
-    # Botón para reiniciar
     if st.button('Reiniciar'):
-        st.session_state.clear()  # Limpiar el estado de la sesión
+        st.session_state.clear()
         st.success('La calculadora ha sido reiniciada. Ingresa un nuevo tamaño del array.')
 
 if __name__ == "__main__":

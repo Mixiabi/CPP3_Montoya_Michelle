@@ -39,7 +39,6 @@ def main():
         elif operacion == 'División':
             resultado = dividir(num1, num2)
 
-        # Mostrar el resultado
         st.write(f'Resultado: {resultado:.2f}')
 
 if __name__ == "__main__":
